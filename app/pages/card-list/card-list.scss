@@ -1,7 +1,7 @@
 .card-list-page {
 
 	ion-item.item-input {
-		width: 70%;
+		// width: 70%;
 		float: left;
 	}
 
@@ -9,8 +9,16 @@
 		float: right;
 	}
 
-	h1 {
+	h4 {
 		clear: both;
+		width: 70%;
+		float: right;
+	}
+
+	.thumb {
+		width: 70px;
+		margin-top: 20px;
+		margin-left: 10px;
 	}
 
 }

@@ -24,6 +24,7 @@ export class CardListPage {
     this.netrunnerDBService.load(cardId)
     .then(data => {
       this.card = data.data[0];
+      this.card.img = `https://netrunnerdb.com/card_image/${this.card.code}.png`
     });
 
   }
