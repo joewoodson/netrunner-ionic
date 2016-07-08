@@ -1,3 +1,16 @@
-.card-list {
+.card-list-page {
+
+	ion-item.item-input {
+		width: 70%;
+		float: left;
+	}
+
+	button {
+		float: right;
+	}
+
+	h1 {
+		clear: both;
+	}
 
 }

@@ -14,18 +14,24 @@ import { NetrunnerDbService} from '../../providers/netrunner-db-service/netrunne
 })
 export class CardListPage {
   public card: any;
+  private cardId: any;
 
   constructor(private nav: NavController, public netrunnerDBService: NetrunnerDbService) {
-    this.loadCard();
+
   }
 
-  loadCard(){
-    this.netrunnerDBService.load()
+  loadCard(cardId){
+    this.netrunnerDBService.load(cardId)
     .then(data => {
       this.card = data.data[0];
-      console.log(this.card.cost);
     });
 
+  }
+
+  searchCardDB(event){
+    if (event.target.value.length > 2) {
+      this.loadCard(event.target.value);
+    }
   }
 
 }
