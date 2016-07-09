@@ -14,7 +14,8 @@ import { NetrunnerDbService} from '../../providers/netrunner-db-service/netrunne
 })
 export class CardListPage {
   private cards: any;
-  private deckId: any;
+  private packCode: any;
+  private matchingCards: any;
 
   constructor(private nav: NavController, private netrunnerDBService: NetrunnerDbService) {
     this.loadCards();
@@ -28,7 +29,16 @@ export class CardListPage {
   }
 
   searchDeck(){
-    console.log(this.deckId);
+    this.matchingCards = this.cards.filter(this.filterByPack.bind(this));
+    console.log(this.matchingCards);
+  }
+
+  filterByPack(obj) {
+    if ('pack_code' in obj && obj.pack_code === this.packCode) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   // searchCard(cardId){
