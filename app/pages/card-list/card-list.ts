@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NetrunnerDbService} from '../../providers/netrunner-db-service/netrunner-db-service';
+import { CardDetailPage } from '../card-detail/card-detail';
 
-/*
-  Generated class for the CardListPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   templateUrl: 'build/pages/card-list/card-list.html',
   providers: [NetrunnerDbService]
@@ -29,16 +24,12 @@ export class CardListPage {
   }
 
   searchDeck(){
-    this.matchingCards = this.cards.filter(this.filterByPack.bind(this));
-    console.log(this.matchingCards);
+    this.matchingCards = this.cards.filter(card => card.pack_code === this.packCode);
   }
 
-  filterByPack(obj) {
-    if ('pack_code' in obj && obj.pack_code === this.packCode) {
-      return true;
-    } else {
-      return false;
-    }
+  showCardDetail(card){
+    console.log(card.title);
+    this.nav.push(CardDetailPage, { card });
   }
 
   // searchCard(cardId){

@@ -19,11 +19,11 @@
   </ion-item>
   <button (click)="searchDeck()">Search</button>
 
-	<!-- <ion-list>
-		<ion-item *ngFor="let card of cards">
+	<ion-list>
+		<ion-item *ngFor="let card of matchingCards" (click)="showCardDetail(card)">
 			<img src="https://netrunnerdb.com/card_image/{{card.code}}.png" alt="{{card.title}}" class="thumb">
-      <h4>{{card.title}}</h4>
+      <h3>{{card.title}}</h3>
 		</ion-item>
-	</ion-list> -->
+	</ion-list>
 
 </ion-content>
