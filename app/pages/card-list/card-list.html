@@ -17,8 +17,9 @@
 	<ion-item>
     <ion-input type="text" placeholder="Enter Pack Code" [(ngModel)]="packCode"></ion-input>
   </ion-item>
-  <button (click)="searchDeck()">Search</button>
+  <button (click)="searchPack()">Search</button>
 
+  <p padding class="clear" [hidden]="matchesFound">No matching pack found</p>
 	<ion-list>
 		<ion-item *ngFor="let card of matchingCards" (click)="showCardDetail(card)">
 			<img src="https://netrunnerdb.com/card_image/{{card.code}}.png" alt="{{card.title}}" class="thumb">
