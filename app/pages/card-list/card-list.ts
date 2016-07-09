@@ -13,26 +13,37 @@ import { NetrunnerDbService} from '../../providers/netrunner-db-service/netrunne
   providers: [NetrunnerDbService]
 })
 export class CardListPage {
-  public card: any;
-  private cardId: any;
+  private cards: any;
+  private deckId: any;
 
-  constructor(private nav: NavController, public netrunnerDBService: NetrunnerDbService) {
-
+  constructor(private nav: NavController, private netrunnerDBService: NetrunnerDbService) {
+    this.loadCards();
   }
 
-  loadCard(cardId){
-    this.netrunnerDBService.load(cardId)
+  loadCards(){
+    this.netrunnerDBService.load()
     .then(data => {
-      this.card = data.data[0];
-      this.card.img = `https://netrunnerdb.com/card_image/${this.card.code}.png`
+      this.cards = data;
     });
-
   }
 
-  searchCardDB(event){
-    if (event.target.value.length > 2) {
-      this.loadCard(event.target.value);
-    }
+  searchDeck(){
+    console.log(this.deckId);
   }
+
+  // searchCard(cardId){
+  //   this.netrunnerDBService.load(cardId)
+  //   .then(data => {
+  //     this.card = data.data;
+  //     console.log(this.card);
+  //     this.card.img = `https://netrunnerdb.com/card_image/${this.card.code}.png`
+  //   });
+  // }
+
+  // searchCardDB(event){
+  //   if (event.target.value.length > 2) {
+  //     this.loadCard(event.target.value);
+  //   }
+  // }
 
 }
