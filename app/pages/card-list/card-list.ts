@@ -14,7 +14,6 @@ export class CardListPage {
   private matchesFound: boolean;
 
   constructor(private nav: NavController, private netrunnerDBService: NetrunnerDbService) {
-    this.loadCards();
     this.matchesFound = true;
   }
 
@@ -28,12 +27,15 @@ export class CardListPage {
   searchPack(){
     this.matchingCards = this.cards.filter(card => card.pack_code === this.packCode);
     this.matchesFound = (Object.keys(this.matchingCards).length == 0) ? false : true;
-    console.log(this.matchesFound);
   }
 
   showCardDetail(card){
     console.log(card.title);
     this.nav.push(CardDetailPage, { card });
+  }
+
+  onPageWillEnter(){
+    this.loadCards();
   }
 
   // searchCard(cardId){
