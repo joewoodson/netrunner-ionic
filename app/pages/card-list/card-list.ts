@@ -25,7 +25,7 @@ export class CardListPage {
   }
 
   searchPack(){
-    this.matchingCards = this.cards.filter(card => card.pack_code === this.packCode);
+    this.matchingCards = this.cards.filter(card => card.pack_code === this.packCode.toLowerCase());
     this.matchesFound = (Object.keys(this.matchingCards).length == 0) ? false : true;
   }
 

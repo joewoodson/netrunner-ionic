@@ -18,4 +18,8 @@ export class CardDetailPage {
   	this.card = params.get('card');
   }
 
+  cardClicked(){
+  	this.nav.pop();
+  }
+
 }
