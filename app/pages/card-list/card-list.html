@@ -14,10 +14,12 @@
 
 
 <ion-content padding>
+  <form>
 	<ion-item>
     <ion-input type="text" placeholder="Enter Pack Code" [(ngModel)]="packCode"></ion-input>
   </ion-item>
   <button (click)="searchPack()">Search</button>
+  </form>
 
   <p padding class="clear" [hidden]="matchesFound">No matching pack found</p>
 	<ion-list>
