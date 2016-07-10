@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NetrunnerDbService} from '../../providers/netrunner-db-service/netrunner-db-service';
+import { AuthService } from '../../providers/auth/auth';
 import { CardDetailPage } from '../card-detail/card-detail';
+import { ProfilePage } from '../profile/profile';
 
 @Component({
   templateUrl: 'build/pages/card-list/card-list.html',
@@ -13,7 +15,7 @@ export class CardListPage {
   private matchingCards: any;
   private matchesFound: boolean;
 
-  constructor(private nav: NavController, private netrunnerDBService: NetrunnerDbService) {
+  constructor(private nav: NavController, private netrunnerDBService: NetrunnerDbService, private auth: AuthService) {
     this.matchesFound = true;
   }
 
@@ -36,6 +38,13 @@ export class CardListPage {
 
   onPageWillEnter(){
     this.loadCards();
+  }
+
+  logout(){
+    this.auth.logout();
+    this.nav.push(ProfilePage);
+    this.nav.pop(CardListPage);
+    console.log('logged out');
   }
 
   // searchCard(cardId){

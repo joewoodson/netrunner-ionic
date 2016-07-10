@@ -23,9 +23,11 @@ import {ProfilePage} from './pages/profile/profile';
   ]
 })
 export class MyApp {
-  rootPage: any = ProfilePage;
+  rootPage: any;
 
-  constructor(platform: Platform) {
+  constructor(platform: Platform, auth: AuthService) {
+    this.rootPage = auth.authenticated() ? CardListPage : ProfilePage;
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

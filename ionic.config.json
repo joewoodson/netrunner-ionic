@@ -2,5 +2,6 @@
   "name": "Netrunner Test App",
   "app_id": "87b69022",
   "typescript": true,
-  "v2": true
+  "v2": true,
+  "defaultBrowser": "firefox"
 }
