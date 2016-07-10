@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AuthService } from '../../providers/auth/auth';
+import { CardListPage } from '../card-list/card-list';
 
 /*
   Generated class for the ProfilePage page.
@@ -14,7 +15,10 @@ import { AuthService } from '../../providers/auth/auth';
 export class ProfilePage {
 
   constructor(private nav: NavController, private auth: AuthService) {
-  	
+  	this.auth.lock.on("signin success", (nav) => {
+  		this.nav.push(CardListPage);
+  		this.nav.pop(ProfilePage);
+  	})
   }
 
 }
