@@ -1,4 +1,4 @@
-import {Storage, LocalStorage} from 'ionic-angular';
+import {Storage, LocalStorage, SqlStorage} from 'ionic-angular';
 import {AuthHttp, JwtHelper, tokenNotExpired} from 'angular2-jwt';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Rx';

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {Storage, SqlStorage} from 'ionic-angular';
 import { NetrunnerDbService} from '../../providers/netrunner-db-service/netrunner-db-service';
 import { AuthService } from '../../providers/auth/auth';
 import { CardDetailPage } from '../card-detail/card-detail';
@@ -14,6 +15,7 @@ export class CardListPage {
   private packCode: any;
   private matchingCards: any;
   private matchesFound: boolean;
+  sqlStorage: Storage = new Storage(SqlStorage);
 
   constructor(private nav: NavController, private netrunnerDBService: NetrunnerDbService, private auth: AuthService) {
     this.matchesFound = true;
