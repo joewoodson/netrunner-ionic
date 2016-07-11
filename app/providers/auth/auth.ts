@@ -1,4 +1,4 @@
-import {Storage, LocalStorage, SqlStorage} from 'ionic-angular';
+import {Storage, LocalStorage} from 'ionic-angular';
 import {AuthHttp, JwtHelper, tokenNotExpired} from 'angular2-jwt';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
@@ -11,7 +11,7 @@ export class AuthService {
   jwtHelper: JwtHelper = new JwtHelper();
   lock = new Auth0Lock('59QBWgUOcZnVfInoZhAo0kFgF3epVlSM', 'joewoodson.eu.auth0.com');
   local: Storage = new Storage(LocalStorage);
-  user: Object;
+  user: any;
 
   constructor(private authHttp: AuthHttp) {
     // If there is a profile saved in local storage

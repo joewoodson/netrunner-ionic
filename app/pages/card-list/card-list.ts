@@ -43,9 +43,10 @@ export class CardListPage {
   }
 
   logout(){
+    // this.sqlStorage.set('nickname', this.auth.user.nickname);
     this.auth.logout();
     this.nav.push(ProfilePage);
-    this.nav.pop(CardListPage);
+    // this.nav.pop(CardListPage);
     console.log('logged out');
   }
 

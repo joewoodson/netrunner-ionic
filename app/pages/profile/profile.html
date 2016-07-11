@@ -1,5 +1,5 @@
 <ion-header>
-	<ion-navbar>
+	<ion-navbar hideBackButton="true">
 		<ion-title>Profile</ion-title>
 	</ion-navbar>
 </ion-header>
@@ -10,16 +10,16 @@
 
 </ion-content>
 
-<ion-content padding *ngIf="auth.authenticated()">  
+<!-- <ion-content padding *ngIf="auth.authenticated()">  
 
 	<ion-card>
 
 	  <ion-item *ngIf="auth.user">
-	   <!--  <ion-avatar item-left>
+	    <ion-avatar item-left>
 	      <img src="{{ auth.user.picture }}">
 	    </ion-avatar>
 	    <h2>{{ auth.user.nickname }}</h2>
-	    <p>{{ auth.user.email }}</p> -->
+	    <p>{{ auth.user.email }}</p>
 	    <h1>{{auth.user.nickname}}</h1>
 	  </ion-item>
 
@@ -27,4 +27,4 @@
 
 	<button (click)="auth.logout()">Logout</button>
 
-</ion-content>
+</ion-content> -->

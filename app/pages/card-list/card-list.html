@@ -8,6 +8,7 @@
 
   <ion-navbar>
     <ion-title>Netrunner Card DB</ion-title>
+    <button (click)="logout()" end>Logout</button>
   </ion-navbar>
 
 </ion-header>
@@ -21,7 +22,6 @@
   <button (click)="searchPack()">Search</button>
   </form>
 
-  <button (click)="logout()">Logout</button>
   <p padding class="clear" [hidden]="matchesFound">No matching pack found</p>
 	<ion-list>
 		<ion-item *ngFor="let card of matchingCards" (click)="showCardDetail(card)">
