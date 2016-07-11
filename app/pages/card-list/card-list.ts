@@ -38,7 +38,8 @@ export class CardListPage {
     this.nav.push(CardDetailPage, { card });
   }
 
-  favorited(card){
+  clickFavorite(card){
+    card.favorite = !card.favorite;
     this.sqlStorage.set('favorite', JSON.stringify(card));
   }
 

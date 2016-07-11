@@ -26,12 +26,13 @@
 
   <h1 *ngIf="favorite">{{favorite.title}}</h1>
   <p padding class="clear" [hidden]="matchesFound">No matching pack found</p>
+
 	<ion-list>
-		<ion-item *ngFor="let card of matchingCards" (click)="showCardDetail(card)">
-			<img src="https://netrunnerdb.com/card_image/{{card.code}}.png" alt="{{card.title}}" class="thumb">
+		<ion-item *ngFor="let card of matchingCards">
+			<img (click)="showCardDetail(card)" src="https://netrunnerdb.com/card_image/{{card.code}}.png" alt="{{card.title}}" class="thumb">
       <h3>
         {{card.title}} 
-        <ion-icon name="star-outline" (click)="favorited(card)"></ion-icon>
+        <ion-icon  [class.red]="card.favorite" name="star-outline" (click)="clickFavorite(card)"></ion-icon>
       </h3>
 		</ion-item>
 	</ion-list>
