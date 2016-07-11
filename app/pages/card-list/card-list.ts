@@ -15,6 +15,7 @@ export class CardListPage {
   private packCode: any;
   private matchingCards: any;
   private matchesFound: boolean;
+  private favorite: any; 
   sqlStorage: Storage = new Storage(SqlStorage);
 
   constructor(private nav: NavController, private netrunnerDBService: NetrunnerDbService, private auth: AuthService) {
@@ -34,19 +35,26 @@ export class CardListPage {
   }
 
   showCardDetail(card){
-    console.log(card.title);
     this.nav.push(CardDetailPage, { card });
+  }
+
+  favorited(card){
+    this.sqlStorage.set('favorite', JSON.stringify(card));
   }
 
   onPageWillEnter(){
     this.loadCards();
+    this.sqlStorage.get('favorite').then(favorite => {
+      this.favorite = JSON.parse(favorite);
+    }).catch(error => {
+      console.log(error);
+    });
+    console.log
   }
 
   logout(){
-    // this.sqlStorage.set('nickname', this.auth.user.nickname);
     this.auth.logout();
     this.nav.push(ProfilePage);
-    // this.nav.pop(CardListPage);
     console.log('logged out');
   }
 

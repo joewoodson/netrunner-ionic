@@ -8,7 +8,9 @@
 
   <ion-navbar>
     <ion-title>Netrunner Card DB</ion-title>
-    <button (click)="logout()" end>Logout</button>
+    <ion-buttons end>
+      <button small (click)="logout()" >Logout</button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -22,11 +24,15 @@
   <button (click)="searchPack()">Search</button>
   </form>
 
+  <h1 *ngIf="favorite">{{favorite.title}}</h1>
   <p padding class="clear" [hidden]="matchesFound">No matching pack found</p>
 	<ion-list>
 		<ion-item *ngFor="let card of matchingCards" (click)="showCardDetail(card)">
 			<img src="https://netrunnerdb.com/card_image/{{card.code}}.png" alt="{{card.title}}" class="thumb">
-      <h3>{{card.title}}</h3>
+      <h3>
+        {{card.title}} 
+        <ion-icon name="star-outline" (click)="favorited(card)"></ion-icon>
+      </h3>
 		</ion-item>
 	</ion-list>
 

@@ -1,12 +1,12 @@
 .card-list-page {
 
 	ion-item.item-input {
-		// width: 70%;
-		// float: left;
+		width: 70%;
+		float: left;
 	}
 
 	button {
-		// float: right;
+		float: right;
 	}
 
 	ion-list > ion-item:first-child {
@@ -23,6 +23,13 @@
 		width: 60%;
 		font-size: 16px;
 		color: darken(grey, 18%);
+	}
+
+	ion-icon {
+		float: right;
+		padding-top: 20px;
+		font-size: 28px;
+		color: gold;
 	}
 
 	.thumb {
