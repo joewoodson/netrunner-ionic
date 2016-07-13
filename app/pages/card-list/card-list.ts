@@ -15,17 +15,27 @@ export class CardListPage {
   private packCode: any;
   private matchingCards: any;
   private matchesFound: boolean;
-  private favorite: any; 
+  private favorite: boolean; 
   sqlStorage: Storage = new Storage(SqlStorage);
 
   constructor(private nav: NavController, private netrunnerDBService: NetrunnerDbService, private auth: AuthService) {
     this.matchesFound = true;
+    this.sqlStorage.get('cards').then(cards => {
+      if (!cards) {
+        this.loadCards();
+        return;
+      }
+      this.cards = JSON.parse(cards);
+    }).catch(error => {
+      console.log(error);
+    });
   }
 
   loadCards(){
     this.netrunnerDBService.load()
     .then(data => {
       this.cards = data;
+      this.sqlStorage.set('cards', JSON.stringify(this.cards));
     });
   }
 
@@ -40,17 +50,17 @@ export class CardListPage {
 
   clickFavorite(card){
     card.favorite = !card.favorite;
-    this.sqlStorage.set('favorite', JSON.stringify(card));
+    this.sqlStorage.set('cards', JSON.stringify(this.cards));
+    // this.sqlStorage.set('favorite', JSON.stringify(card));
   }
 
   onPageWillEnter(){
-    this.loadCards();
-    this.sqlStorage.get('favorite').then(favorite => {
-      this.favorite = JSON.parse(favorite);
-    }).catch(error => {
-      console.log(error);
-    });
-    console.log
+    // this.loadCards();
+    // this.sqlStorage.get('favorite').then(favorite => {
+    //   this.favorite = JSON.parse(favorite);
+    // }).catch(error => {
+    //   console.log(error);
+    // });
   }
 
   logout(){
