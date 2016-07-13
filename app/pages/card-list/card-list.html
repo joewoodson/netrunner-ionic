@@ -32,7 +32,8 @@
 			<img (click)="showCardDetail(card)" src="https://netrunnerdb.com/card_image/{{card.code}}.png" alt="{{card.title}}" class="thumb">
       <h3>
         {{card.title}} 
-        <ion-icon  [class.red]="card.favorite" name="star-outline" (click)="clickFavorite(card)"></ion-icon>
+        <ion-icon [hidden]="!card.favorite" name="star" (click)="clickFavorite(card)"></ion-icon>
+        <ion-icon [hidden]="card.favorite" name="star-outline" (click)="clickFavorite(card)"></ion-icon>        
       </h3>
 		</ion-item>
 	</ion-list>
